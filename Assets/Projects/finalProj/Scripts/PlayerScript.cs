@@ -119,9 +119,10 @@ public class PlayerScript : MonoBehaviour {
             stab.x += collider.bounds.extents.x;
             stab.y += collider.bounds.extents.y;
             Debug.DrawRay(stab, -Vector3.left, Color.green);
-            if (Physics.Raycast(stab, -Vector3.left, 8.68f)) {
+            Ray ray = new Ray(stab, -Vector3.left);
+            //if (Physics.Raycast(stab, , 8.68f)) {
                 //Debug.Log(hit.transform.gameObject.name);
-            }
+            //}
                 
         } else {
             //right
