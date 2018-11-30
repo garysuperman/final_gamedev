@@ -29,41 +29,44 @@ public class treant_script : MonoBehaviour {
 	void Update () {
         Vector3 moving;
         Vector3 rot = treant.transform.rotation.eulerAngles;
+        bool attacking = (treant_anim.GetCurrentAnimatorStateInfo(0).IsName("treant_attack_slam") 
+                       || treant_anim.GetCurrentAnimatorStateInfo(0).IsName("treant_attack_stomp"));
+        bool onTheMove = treant_anim.GetCurrentAnimatorStateInfo(0).IsName("treant_walk");
 
-        Debug.Log(distanceFromPlayer());
-        if(distanceFromPlayer() < 60f) {
-            if(distanceFromPlayer() > 35f) {
+        if (distanceFromPlayer() < 60f) {
+            if (distanceFromPlayer() > 35f) {
                 this.treant_anim.SetInteger(speed, 1);
             } else {
-                if (distanceFromPlayer() > 30f)
-                    this.treant_anim.SetInteger(speed, 3);
-                else
-                    this.treant_anim.SetInteger(speed, 2);
+                if (rot.y < 90 || rot.y > 270) {
+                    Debug.Log(rot.y);
+                    if (distanceFromPlayer() > 30f)
+                        this.treant_anim.SetInteger(speed, 3);
+                    else
+                        this.treant_anim.SetInteger(speed, 2);
+                }
             }
-            
+
             if (facing == faced()) {
                 //x == 90
-                if(distanceFromPlayer() < 60f && distanceFromPlayer() > 30f 
-                   && !treant_anim.GetCurrentAnimatorStateInfo(0).IsName("treant_attack_slam")
-                   && !treant_anim.GetCurrentAnimatorStateInfo(0).IsName("treant_attack_stomp")) { 
+                if (distanceFromPlayer() < 60f && distanceFromPlayer() > 30f && onTheMove) { 
                     moving = treant.transform.localPosition;
                     moving.x += 0.35f;
                     treant.transform.localPosition = moving;
                 }
-                else if (rot.y > 90) {
+                if (rot.y > 90 && !attacking) {
+                    this.treant_anim.SetInteger(speed, 0);
                     treant.transform.Rotate(Vector3.down * Time.deltaTime * TURN_AMOUNT_MODIFIER, Space.World);
                 }
                 
             } else {
                 //x = 270
-                if (distanceFromPlayer() < 60f && distanceFromPlayer() > 30f
-                   && !treant_anim.GetCurrentAnimatorStateInfo(0).IsName("treant_attack_slam")
-                   && !treant_anim.GetCurrentAnimatorStateInfo(0).IsName("treant_attack_stomp")) {
+                if (distanceFromPlayer() < 60f && distanceFromPlayer() > 30f && onTheMove) {
                     moving = treant.transform.localPosition;
                     moving.x -= 0.35f;
                     treant.transform.localPosition = moving;
                 }
-                else if (rot.y < 270) {
+                if (rot.y < 270 && !attacking) {
+                    this.treant_anim.SetInteger(speed, 0);
                     treant.transform.Rotate(Vector3.up * Time.deltaTime * TURN_AMOUNT_MODIFIER, Space.World);
                 }
                 
