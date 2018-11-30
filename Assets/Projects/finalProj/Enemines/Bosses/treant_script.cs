@@ -78,11 +78,6 @@ public class treant_script : MonoBehaviour {
         
     }
 
-    private void hitByPlayer() {
-        health -= 10;
-        Debug.Log(health);
-    }
-
     private float distanceFromPlayer() {
         return Vector3.Distance(player.transform.position, treant.transform.position);
     }
