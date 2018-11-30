@@ -14,7 +14,23 @@ public class MainMenuScreen : View {
 		
 	}
 
-	public void OnPlayClicked() {
+    private void Update()
+    {
+        /*if (ViewHandler.Instance.IsViewActive("MainMenu") && Input.GetKeyDown(KeyCode.Escape))
+        {
+            TwoChoiceDialog dialog = (TwoChoiceDialog)DialogBuilder.Create(DialogBuilder.DialogType.CHOICE_DIALOG);
+            dialog.SetMessage("Are you sure you want to quit?");
+            dialog.SetConfirmText("YES");
+            dialog.SetCancelText("NO");
+
+            dialog.SetOnConfirmListener(() =>
+            {
+                Application.Quit();
+            });
+        }*/
+    }
+
+    public void OnPlayClicked() {
 		LoadManager.Instance.LoadScene (SceneNames.GAME_SCENE);	
 	}
 
