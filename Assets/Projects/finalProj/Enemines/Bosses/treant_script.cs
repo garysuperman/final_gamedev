@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class treant_script : MonoBehaviour {
     //stats
-    [SerializeField] private int health = 100;
+    [SerializeField] private int health = 2000;
 
     //speed = 0/idle, 1/run, 2/attack 1, 3/attack 2
     private const string speed = "speed";
@@ -38,7 +38,7 @@ public class treant_script : MonoBehaviour {
                 this.treant_anim.SetInteger(speed, 1);
             } else {
                 if (rot.y < 90 || rot.y > 270) {
-                    Debug.Log(rot.y);
+                    //Debug.Log(rot.y);
                     if (distanceFromPlayer() > 30f)
                         this.treant_anim.SetInteger(speed, 3);
                     else
@@ -78,7 +78,7 @@ public class treant_script : MonoBehaviour {
         
     }
 
-    private void hitByPlayer() {
+    public void hitByPlayer() {
         health -= 10;
         Debug.Log(health);
     }

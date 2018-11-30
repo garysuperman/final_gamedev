@@ -120,9 +120,11 @@ public class PlayerScript : MonoBehaviour {
             stab.y += collider.bounds.extents.y;
             Debug.DrawRay(stab, -Vector3.left, Color.green);
             Ray ray = new Ray(stab, -Vector3.left);
-            //if (Physics.Raycast(stab, , 8.68f)) {
-                //Debug.Log(hit.transform.gameObject.name);
-            //}
+            if (Physics.Raycast(ray, out hit, 8.68f)) {
+                if (hit.transform.gameObject.name.Equals("treant - lowpoly-Rigify")) {
+                    hit.transform.gameObject.GetComponent<treant_script>().hitByPlayer();
+                }
+            }
                 
         } else {
             //right
