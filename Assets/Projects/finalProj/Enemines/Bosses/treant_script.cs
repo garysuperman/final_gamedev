@@ -32,17 +32,24 @@ public class treant_script : MonoBehaviour {
         bool attacking = (treant_anim.GetCurrentAnimatorStateInfo(0).IsName("treant_attack_slam") 
                        || treant_anim.GetCurrentAnimatorStateInfo(0).IsName("treant_attack_stomp"));
         bool onTheMove = treant_anim.GetCurrentAnimatorStateInfo(0).IsName("treant_walk");
+        bool idled = treant_anim.GetCurrentAnimatorStateInfo(0).IsName("treant_idle");
+        int crrntSpeed = this.treant_anim.GetInteger(speed);
 
         if (distanceFromPlayer() < 60f) {
             if (distanceFromPlayer() > 35f) {
                 this.treant_anim.SetInteger(speed, 1);
             } else {
                 if (rot.y < 90 || rot.y > 270) {
-                    //Debug.Log(rot.y);
-                    if (distanceFromPlayer() > 30f)
+                    if (distanceFromPlayer() > 30f) {
+                        if (idled)
+                            this.player.GetComponent<PlayerScript>().wasHit("treant");
                         this.treant_anim.SetInteger(speed, 3);
-                    else
+                    } else {
+                        if (idled)
+                            this.player.GetComponent<PlayerScript>().wasHit("treant");
                         this.treant_anim.SetInteger(speed, 2);
+                    }
+                        
                 }
             }
 
@@ -80,7 +87,7 @@ public class treant_script : MonoBehaviour {
 
     public void hitByPlayer() {
         health -= 10;
-        Debug.Log(health);
+        //Debug.Log(health);
     }
 
     private float distanceFromPlayer() {

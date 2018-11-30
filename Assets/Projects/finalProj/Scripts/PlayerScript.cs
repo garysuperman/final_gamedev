@@ -92,8 +92,6 @@ public class PlayerScript : MonoBehaviour {
             this.playerAnim.SetBool(onAir, false);
         }
 
-
-
         Vector3 rot =  player.transform.rotation.eulerAngles;
         
         if (facing == 0) {
@@ -108,6 +106,13 @@ public class PlayerScript : MonoBehaviour {
             }
         }
         
+    }
+
+    public void wasHit(string name) {
+        if (name.Equals("treant")) {
+            health -= 10;
+            Debug.Log(health);
+        }
     }
 
     private void attack() {
