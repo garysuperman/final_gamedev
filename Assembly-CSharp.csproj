@@ -67,6 +67,8 @@
     <Compile Include="Assets\Projects\finalProj\Scripts\PlayerScript.cs" />
     <None Include="Assets\Projects\finalProj\Materials\toonShader.shader" />
     <None Include="Assets\Projects\finalProj\Materials\SmearMats\Smear.shader" />
+    <None Include="Assets\RigifyToUnity\Readme.txt" />
+    <None Include="Assets\RigifyToUnity\Release Notes.txt" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>D:/SchoolLocal/GAMEDEV/real_game/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
