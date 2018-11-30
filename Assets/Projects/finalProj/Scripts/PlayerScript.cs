@@ -113,25 +113,25 @@ public class PlayerScript : MonoBehaviour {
     private void attack() {
         //stab
         Vector3 stab = transform.position;
+        Ray ray = new Ray();
         RaycastHit hit;
         if (facing == 0) {
             //left
             stab.x += collider.bounds.extents.x;
             stab.y += collider.bounds.extents.y;
-            Debug.DrawRay(stab, -Vector3.left, Color.green);
-            Ray ray = new Ray(stab, -Vector3.left);
-            if (Physics.Raycast(ray, out hit, 8.68f)) {
-                if (hit.transform.gameObject.name.Equals("treant - lowpoly-Rigify")) {
-                    hit.transform.gameObject.GetComponent<treant_script>().hitByPlayer();
-                }
-            }
+            ray = new Ray(stab, -Vector3.left);
                 
         } else {
             //right
             stab.x -= collider.bounds.extents.x;
             stab.y += collider.bounds.extents.y;
-            Debug.DrawRay(stab, -Vector3.right, Color.green);
-            Physics.Raycast(stab, -Vector3.right, 8.68f);
+            ray = new Ray(stab, -Vector3.right);
+        }
+
+        if (Physics.Raycast(ray, out hit, 8.68f)) {
+            if (hit.transform.gameObject.name.Contains("treant - lowpoly-Rigify")) {
+                hit.transform.gameObject.GetComponent<treant_script>().hitByPlayer();
+            }
         }
     }
 

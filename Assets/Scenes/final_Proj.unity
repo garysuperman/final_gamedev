@@ -390,7 +390,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9647986db679fe64791586e5c15e403b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 2000
+  health: 5000
   treant_anim: {fileID: 640450436}
   treant: {fileID: 640450435}
   player: {fileID: 1295088777}
