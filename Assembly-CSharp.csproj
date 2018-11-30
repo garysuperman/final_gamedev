@@ -63,10 +63,40 @@
   <ItemGroup>
     <Compile Include="Assets\Projects\finalProj\Enemines\Bosses\treant_script.cs" />
     <Compile Include="Assets\Projects\finalProj\Materials\SmearMats\SmearEffect.cs" />
+    <Compile Include="Assets\Projects\finalProj\Scripts\Broadcasting\EventBroadcaster.cs" />
+    <Compile Include="Assets\Projects\finalProj\Scripts\Broadcasting\EventNames.cs" />
+    <Compile Include="Assets\Projects\finalProj\Scripts\Broadcasting\ObserverList.cs" />
+    <Compile Include="Assets\Projects\finalProj\Scripts\Broadcasting\Parameters.cs" />
     <Compile Include="Assets\Projects\finalProj\Scripts\followPlayer.cs" />
+    <Compile Include="Assets\Projects\finalProj\Scripts\GameModel\GameMechanicHandler.cs" />
+    <Compile Include="Assets\Projects\finalProj\Scripts\GameModel\IPictureMatchListener.cs" />
+    <Compile Include="Assets\Projects\finalProj\Scripts\GameModel\PictureModel.cs" />
+    <Compile Include="Assets\Projects\finalProj\Scripts\LoadManager\LoadManager.cs" />
+    <Compile Include="Assets\Projects\finalProj\Scripts\LoadManager\SceneNames.cs" />
     <Compile Include="Assets\Projects\finalProj\Scripts\PlayerScript.cs" />
+    <Compile Include="Assets\Projects\finalProj\Scripts\Pooling\APoolable.cs" />
+    <Compile Include="Assets\Projects\finalProj\Scripts\Pooling\GameObjectPool.cs" />
+    <Compile Include="Assets\Projects\finalProj\Scripts\ViewHandler\BlackOverlay.cs" />
+    <Compile Include="Assets\Projects\finalProj\Scripts\ViewHandler\NullScreen.cs" />
+    <Compile Include="Assets\Projects\finalProj\Scripts\ViewHandler\Popups\DialogBuilder.cs" />
+    <Compile Include="Assets\Projects\finalProj\Scripts\ViewHandler\Popups\DialogInterface.cs" />
+    <Compile Include="Assets\Projects\finalProj\Scripts\ViewHandler\Popups\NotificationDialog.cs" />
+    <Compile Include="Assets\Projects\finalProj\Scripts\ViewHandler\Popups\TimedDialog.cs" />
+    <Compile Include="Assets\Projects\finalProj\Scripts\ViewHandler\Popups\TwoChoiceDialog.cs" />
+    <Compile Include="Assets\Projects\finalProj\Scripts\ViewHandler\View.cs" />
+    <Compile Include="Assets\Projects\finalProj\Scripts\ViewHandler\ViewAnimation.cs" />
+    <Compile Include="Assets\Projects\finalProj\Scripts\ViewHandler\ViewAnimation\DOViewAnimation.cs" />
+    <Compile Include="Assets\Projects\finalProj\Scripts\ViewHandler\ViewAnimation\IViewAnimation.cs" />
+    <Compile Include="Assets\Projects\finalProj\Scripts\ViewHandler\ViewHandler.cs" />
+    <Compile Include="Assets\Projects\finalProj\Scripts\ViewHandler\ViewNames.cs" />
+    <Compile Include="Assets\Projects\finalProj\Scripts\Views\MainMenuScreen.cs" />
+    <Compile Include="Assets\Projects\finalProj\Scripts\Views\ResultScreen.cs" />
+    <None Include="Assets\DOTween\DOTween43.xml" />
+    <None Include="Assets\DOTween\DOTween46.xml" />
     <None Include="Assets\Projects\finalProj\Materials\toonShader.shader" />
     <None Include="Assets\Projects\finalProj\Materials\SmearMats\Smear.shader" />
+    <None Include="Assets\DOTween\readme.txt" />
+    <None Include="Assets\DOTween\DOTween50.xml" />
     <None Include="Assets\RigifyToUnity\Readme.txt" />
     <None Include="Assets\RigifyToUnity\Release Notes.txt" />
     <Reference Include="UnityEditor.StandardEvents">
@@ -278,6 +308,18 @@
     </Reference>
     <Reference Include="UnityEngine.SpatialTracking">
       <HintPath>D:/Unity/2018.2.8f1/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween">
+      <HintPath>D:/SchoolLocal/GAMEDEV/real_game/Assets/DOTween/DOTween.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween43">
+      <HintPath>D:/SchoolLocal/GAMEDEV/real_game/Assets/DOTween/DOTween43.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween46">
+      <HintPath>D:/SchoolLocal/GAMEDEV/real_game/Assets/DOTween/DOTween46.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween50">
+      <HintPath>D:/SchoolLocal/GAMEDEV/real_game/Assets/DOTween/DOTween50.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Analytics">
       <HintPath>C:/Users/user/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.16/UnityEngine.Analytics.dll</HintPath>

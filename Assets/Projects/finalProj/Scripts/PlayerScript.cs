@@ -75,6 +75,7 @@ public class PlayerScript : MonoBehaviour {
         }
         else if (Input.GetKey(KeyCode.J)) {
             this.playerAnim.SetInteger(speed, 2);
+            attack();
         }
 
         if (Input.GetKeyDown(KeyCode.Space) && !(jumped || airborn) && isGrounded()) {
@@ -109,11 +110,34 @@ public class PlayerScript : MonoBehaviour {
         
     }
 
+    private void attack() {
+        //stab
+        Vector3 stab = transform.position;
+        RaycastHit hit;
+        if (facing == 0) {
+            //left
+            stab.x += collider.bounds.extents.x;
+            stab.y += collider.bounds.extents.y;
+            Debug.DrawRay(stab, -Vector3.left, Color.green);
+            if (Physics.Raycast(stab, -Vector3.left, 8.68f)) {
+                //Debug.Log(hit.transform.gameObject.name);
+            }
+                
+        } else {
+            //right
+            stab.x -= collider.bounds.extents.x;
+            stab.y += collider.bounds.extents.y;
+            Debug.DrawRay(stab, -Vector3.right, Color.green);
+            Physics.Raycast(stab, -Vector3.right, 8.68f);
+        }
+    }
+
     private bool isGrounded() {
         Vector3 front = transform.position;
         front.x += playerWidth;
         Vector3 back = transform.position;
         back.x -= playerWidth;
+
         return Physics.Raycast(front, -Vector3.up, distToGround + 0.1f) ||
                Physics.Raycast(back, -Vector3.up, distToGround + 0.1f);
     }
