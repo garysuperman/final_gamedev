@@ -41,19 +41,21 @@ public class treant_script : MonoBehaviour {
             } else {
                 if (rot.y < 90 || rot.y > 270) {
                     if (distanceFromPlayer() > 30f) {
-                        if (idled)
-                            this.player.GetComponent<PlayerScript>().wasHit("treant");
+                        if (crrntSpeed == 0)
+                            attackPlayer();
                         this.treant_anim.SetInteger(speed, 3);
                     } else {
-                        if (idled)
-                            this.player.GetComponent<PlayerScript>().wasHit("treant");
+                        if (crrntSpeed == 0)
+                            attackPlayer();
                         this.treant_anim.SetInteger(speed, 2);
                     }
                         
                 }
             }
 
-            if (facing == faced()) {
+            facing = faced();
+
+            if (facing == 0) {
                 //x == 90
                 if (distanceFromPlayer() < 60f && distanceFromPlayer() > 30f && onTheMove) { 
                     moving = treant.transform.localPosition;
@@ -85,13 +87,30 @@ public class treant_script : MonoBehaviour {
         
     }
 
+    public void attackPlayer() {
+        if (distanceFromPlayer() <= 35f && inAttackZone())
+            this.player.GetComponent<PlayerScript>().wasHit("treant");
+        else Debug.Log("Missed");
+    }
+
     public void hitByPlayer() {
         health -= 10;
-        //Debug.Log(health);
+        Debug.Log("treant :" +  health);
     }
 
     private float distanceFromPlayer() {
         return Vector3.Distance(player.transform.position, treant.transform.position);
+    }
+
+    private bool inAttackZone() {
+        Vector3 rot = treant.transform.rotation.eulerAngles;
+        if (faced() == 0 && rot.y < 90) {
+            return true;
+        } else if (faced() == 1 && rot.y > 270) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     // 0 = right, 1 = left

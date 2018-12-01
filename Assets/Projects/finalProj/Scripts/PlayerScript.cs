@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class PlayerScript : MonoBehaviour {
     //stats
-    [SerializeField] private int health = 100;
+    [SerializeField] private int health = 1000;
 
     //speed = 0/idle, 1/run, 2/attack, 3/downward_thrust
     private const string speed = "speed";
     private const string onAir = "onAir";
     private const string jump = "jump";
     private const string falling = "falling";
+    private const string damage = "damage";
 
     // 0 = right, 1 = left
     private int facing = 0;
@@ -38,6 +39,7 @@ public class PlayerScript : MonoBehaviour {
         bool jumped = this.playerAnim.GetBool(jump);
         bool airborn = this.playerAnim.GetBool(onAir);
         int crrntSpeed = this.playerAnim.GetInteger(speed);
+        bool takingDamage = !playerAnim.GetCurrentAnimatorStateInfo(0).IsName("damaged");
 
         if (!isGrounded() && !airborn) {
             this.playerAnim.SetBool(onAir, true);
@@ -47,22 +49,22 @@ public class PlayerScript : MonoBehaviour {
         if (Input.GetKey(KeyCode.D)) {
             if (!playerAnim.GetCurrentAnimatorStateInfo(0).IsName("attack") &&
                 !playerAnim.GetCurrentAnimatorStateInfo(0).IsName("attack_air") &&
-                !playerAnim.GetCurrentAnimatorStateInfo(0).IsName("attack_downthrust"))
+                !playerAnim.GetCurrentAnimatorStateInfo(0).IsName("attack_downthrust") && takingDamage)
                     facing = 0;
             this.playerAnim.SetInteger(speed, 1);
             moving = player.transform.localPosition;
-            if(!playerAnim.GetCurrentAnimatorStateInfo(0).IsName("attack")) 
+            if(!playerAnim.GetCurrentAnimatorStateInfo(0).IsName("attack") && takingDamage) 
                 moving.x += 0.4f;
             player.transform.localPosition = moving;
             
         } else if (Input.GetKey(KeyCode.A)) {
             if(!playerAnim.GetCurrentAnimatorStateInfo(0).IsName("attack") &&
                 !playerAnim.GetCurrentAnimatorStateInfo(0).IsName("attack_air") &&
-                !playerAnim.GetCurrentAnimatorStateInfo(0).IsName("attack_downthrust"))
+                !playerAnim.GetCurrentAnimatorStateInfo(0).IsName("attack_downthrust") && takingDamage)
                     facing = 1;
             this.playerAnim.SetInteger(speed, 1);
             moving = player.transform.localPosition;
-            if (!playerAnim.GetCurrentAnimatorStateInfo(0).IsName("attack"))    
+            if (!playerAnim.GetCurrentAnimatorStateInfo(0).IsName("attack") && takingDamage)    
                 moving.x -= 0.4f;
             player.transform.localPosition = moving;
 
@@ -78,7 +80,7 @@ public class PlayerScript : MonoBehaviour {
             attack();
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && !(jumped || airborn) && isGrounded()) {
+        if (Input.GetKeyDown(KeyCode.Space) && !(jumped || airborn || !takingDamage) && isGrounded()) {
             this.playerAnim.SetBool(onAir, true);
             this.playerAnim.SetBool(jump, true);
             moving = rigidbody.velocity;
@@ -111,8 +113,11 @@ public class PlayerScript : MonoBehaviour {
     public void wasHit(string name) {
         if (name.Equals("treant")) {
             health -= 10;
-            Debug.Log(health);
+            //Debug.Log(health);
         }
+        if(!playerAnim.GetCurrentAnimatorStateInfo(0).IsName("damaged"))
+            this.playerAnim.SetTrigger(damage); 
+
     }
 
     private void attack() {
@@ -134,7 +139,7 @@ public class PlayerScript : MonoBehaviour {
         }
 
         if (Physics.Raycast(ray, out hit, 8.68f)) {
-            if (hit.transform.gameObject.name.Contains("treant - lowpoly-Rigify")) {
+            if (hit.transform.gameObject.name.Contains("treant")) {
                 hit.transform.gameObject.GetComponent<treant_script>().hitByPlayer();
             }
         }

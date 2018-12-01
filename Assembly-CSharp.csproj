@@ -61,6 +61,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\changeToIdle.cs" />
     <Compile Include="Assets\Projects\finalProj\Enemines\Bosses\treant_script.cs" />
     <Compile Include="Assets\Projects\finalProj\Materials\SmearMats\SmearEffect.cs" />
     <Compile Include="Assets\Projects\finalProj\Scripts\Broadcasting\EventBroadcaster.cs" />
