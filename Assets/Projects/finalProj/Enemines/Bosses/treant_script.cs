@@ -11,7 +11,7 @@ public class treant_script : MonoBehaviour {
 
     // 0 = right, 1 = left
     private int facing = 0;
-    private const float TURN_AMOUNT_MODIFIER = 400.0f;
+    private const float TURN_AMOUNT_MODIFIER = 200.0f;
 
 
     [SerializeField] private Animator treant_anim;
@@ -41,12 +41,12 @@ public class treant_script : MonoBehaviour {
             } else {
                 if (rot.y < 90 || rot.y > 270) {
                     if (distanceFromPlayer() > 30f) {
-                        if (crrntSpeed == 0)
-                            attackPlayer();
+                        if (crrntSpeed == 0 || crrntSpeed == 1)
+                            Invoke("attackPlayer", 2);
                         this.treant_anim.SetInteger(speed, 3);
                     } else {
-                        if (crrntSpeed == 0)
-                            attackPlayer();
+                        if (crrntSpeed == 0 || crrntSpeed == 1)
+                            Invoke("attackPlayer", 2);
                         this.treant_anim.SetInteger(speed, 2);
                     }
                         

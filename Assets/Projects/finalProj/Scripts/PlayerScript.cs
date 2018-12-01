@@ -113,7 +113,7 @@ public class PlayerScript : MonoBehaviour {
     public void wasHit(string name) {
         if (name.Equals("treant")) {
             health -= 10;
-            //Debug.Log(health);
+            Debug.Log(health);
         }
         if(!playerAnim.GetCurrentAnimatorStateInfo(0).IsName("damaged"))
             this.playerAnim.SetTrigger(damage); 
