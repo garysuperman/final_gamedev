@@ -31,6 +31,7 @@ public class MainMenuScreen : View {
     }
 
     public void OnPlayClicked() {
+        Time.timeScale = 1f;
 		LoadManager.Instance.LoadScene (SceneNames.GAME_SCENE);	
 	}
 
