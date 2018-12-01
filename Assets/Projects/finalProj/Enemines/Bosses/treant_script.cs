@@ -46,7 +46,7 @@ public class treant_script : MonoBehaviour {
                         this.treant_anim.SetInteger(speed, 3);
                     } else {
                         if (crrntSpeed == 0 || crrntSpeed == 1)
-                            Invoke("attackPlayer", 2);
+                            Invoke("attackPlayer", 1);
                         this.treant_anim.SetInteger(speed, 2);
                     }
                         
