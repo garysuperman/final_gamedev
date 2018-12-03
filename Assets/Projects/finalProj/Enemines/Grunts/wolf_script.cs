@@ -1,10 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class wolf_script : MonoBehaviour {
     //stats
-    [SerializeField] private int health = 10;
+    //[SerializeField] private int health = 10;
+    public HealthSystem healthSystem = new HealthSystem(10);
+    [SerializeField] public Slider healthBar;
 
     //speed = 0/idle, 1/run, 2/attack 1, 3/attack 2
     private const string speed = "speed";
@@ -25,8 +28,8 @@ public class wolf_script : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-		
-	}
+        healthBar.value = healthSystem.GetHealthInPercent();
+    }
 
     // Update is called once per frame
     void Update(){
@@ -37,7 +40,8 @@ public class wolf_script : MonoBehaviour {
 
         //Debug.Log(health);
 
-        if (distanceFromPlayer() < 50f && cooldown == 0 && health >0){
+        if (distanceFromPlayer() < 50f && cooldown == 0 && healthSystem.GetHealth() >0){
+            healthBar.gameObject.SetActive(true);
             this.wolf_anim.SetInteger(speed, 1);
             
             facing = faced();
@@ -69,7 +73,7 @@ public class wolf_script : MonoBehaviour {
                 }
 
             }
-        } else if(health > 0){
+        } else if(healthSystem.GetHealth() > 0){
             if(cooldown > 0) {
                 cooldown -= 1;
                 if (facing == 0) {
@@ -83,9 +87,11 @@ public class wolf_script : MonoBehaviour {
                 }
             }
             this.wolf_anim.SetInteger(speed, 0);
+            if (distanceFromPlayer() > 50)
+                healthBar.gameObject.SetActive(false);
         } 
 
-        if(health <= 0) {
+        if(healthSystem.GetHealth() <= 0) {
             Physics.IgnoreCollision(player.GetComponent<BoxCollider>(), collider);
             this.wolf_anim.SetTrigger(die);
         }
@@ -93,14 +99,17 @@ public class wolf_script : MonoBehaviour {
     }
 
     public void hitByPlayer() {
-        health -= 1;
-        if (health > 0) {
+        //health -= 1;
+        healthSystem.Damage(1);
+        healthBar.value = healthSystem.GetHealthInPercent();
+        if (healthSystem.GetHealth() > 0) {
             this.wolf_anim.SetTrigger(damaged);
             cooldown = 0;
         }
         else {
             Physics.IgnoreCollision(player.GetComponent<BoxCollider>(), collider);
             this.wolf_anim.SetTrigger(die);
+            healthBar.gameObject.SetActive(false);
         }
         
     }

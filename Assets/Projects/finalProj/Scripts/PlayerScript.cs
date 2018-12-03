@@ -37,6 +37,8 @@ public class PlayerScript : MonoBehaviour
     {
         distToGround = collider.bounds.extents.y - 5.07f;
         playerWidth = collider.bounds.extents.z;
+
+        healthBar.value = healthSystem.GetHealthInPercent();
     }
 
     // Update is called once per frame

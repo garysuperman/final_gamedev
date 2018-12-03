@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class treant_script : MonoBehaviour {
     //stats
-    [SerializeField] private int health = 100;
+    public HealthSystem healthSystem = new HealthSystem(100);
+    [SerializeField] public Slider healthBar;
 
     //speed = 0/idle, 1/run, 2/attack 1, 3/attack 2
     private const string speed = "speed";
@@ -16,12 +18,13 @@ public class treant_script : MonoBehaviour {
 
     [SerializeField] private Animator treant_anim;
     [SerializeField] private GameObject treant;
-    [SerializeField] private GameObject player; 
+    [SerializeField] private GameObject player;
     private BoxCollider[] components;
 
     // Use this for initialization
     void Start () {
         components = treant.GetComponents<BoxCollider>();
+        healthBar.value = healthSystem.GetHealthInPercent();
     }
 	
 	// Update is called once per frame
@@ -34,7 +37,12 @@ public class treant_script : MonoBehaviour {
         bool idled = treant_anim.GetCurrentAnimatorStateInfo(0).IsName("treant_idle");
         int crrntSpeed = this.treant_anim.GetInteger(speed);
 
-        if (distanceFromPlayer() < 60f) {
+        if (distanceFromPlayer() < 60f && healthSystem.GetHealth() > 0) {
+            if (!healthBar.gameObject.activeSelf)
+            {
+                healthBar.gameObject.SetActive(true);
+            }
+
             if (distanceFromPlayer() > 35f) {
                 this.treant_anim.SetInteger(speed, 1);
             } else {
@@ -81,6 +89,10 @@ public class treant_script : MonoBehaviour {
             }
         } else {
             this.treant_anim.SetInteger(speed, 0);
+            if (healthBar.gameObject.activeSelf)
+            {
+                healthBar.gameObject.SetActive(false);
+            }
         }
 
         
@@ -93,8 +105,19 @@ public class treant_script : MonoBehaviour {
     }
 
     public void hitByPlayer() {
-        health -= 2;
-        Debug.Log("treant :" +  health);
+        healthSystem.Damage(2);
+        healthBar.value = healthSystem.GetHealthInPercent();
+        Debug.Log("treant :" + healthSystem.GetHealth());
+
+        if (healthSystem.GetHealth() > 0)
+        {
+            //damaged animation
+        }
+        else {
+            Physics.IgnoreCollision(player.GetComponent<BoxCollider>(), components[2]);
+            //death animation
+            healthBar.gameObject.SetActive(false);
+        }
     }
 
     private float distanceFromPlayer() {
