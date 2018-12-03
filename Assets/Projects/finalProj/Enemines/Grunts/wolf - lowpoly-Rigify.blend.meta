@@ -967,8 +967,8 @@ ModelImporter:
     4300602: WGT-rig_spine_master
     4300604: WGT-rig_torso
     7400000: Default Take
-    7400002: landing
-    7400004: wolf_attack
+    7400002: wolf_damaged
+    7400004: wolf_die
     7400006: wolf_idle
     7400008: wolf_running
     9500000: //RootNode
@@ -1034,10 +1034,10 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: landing
-      takeName: landing
+      name: wolf_damaged
+      takeName: wolf_damaged
       firstFrame: -1
-      lastFrame: 32
+      lastFrame: 29
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -1062,10 +1062,10 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: wolf_attack
-      takeName: wolf_attack
+      name: wolf_die
+      takeName: wolf_die
       firstFrame: -1
-      lastFrame: 11
+      lastFrame: 59
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

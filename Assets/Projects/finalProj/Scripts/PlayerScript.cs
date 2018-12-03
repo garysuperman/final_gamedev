@@ -89,6 +89,7 @@ public class PlayerScript : MonoBehaviour
         if (Input.GetKey(KeyCode.J) && Input.GetKey(KeyCode.S) && !isGrounded())
         {
             this.playerAnim.SetInteger(speed, 3);
+            attack();
         }
         else if (Input.GetKey(KeyCode.J))
         {
@@ -153,11 +154,15 @@ public class PlayerScript : MonoBehaviour
             healthSystem.Damage(20);
             healthBar.value = healthSystem.GetHealthInPercent();
         }
-        if (name.Equals("pitfall"))
-        {
+        else if (name.Equals("pitfall")){
             healthSystem.Damage(20);
             healthBar.value = healthSystem.GetHealthInPercent();
         }
+        else if (name.Equals("wolf")) {
+            healthSystem.Damage(10);
+            healthBar.value = healthSystem.GetHealthInPercent();
+        }
+
         if (!playerAnim.GetCurrentAnimatorStateInfo(0).IsName("damaged"))
             this.playerAnim.SetTrigger(damage);
 
@@ -165,6 +170,8 @@ public class PlayerScript : MonoBehaviour
 
     private void attack()
     {
+        bool treant_hit = false;
+        bool wolf_hit = false;
         //stab
         Vector3 stab = transform.position;
         Ray ray = new Ray();
@@ -185,11 +192,14 @@ public class PlayerScript : MonoBehaviour
             ray = new Ray(stab, -Vector3.right);
         }
 
-        if (Physics.Raycast(ray, out hit, 8.68f))
+        if (Physics.Raycast(ray, out hit, 8.68f*1.5f))
         {
-            if (hit.transform.gameObject.name.Contains("treant"))
-            {
+            if (hit.transform.gameObject.name.Contains("treant") && !treant_hit) {
+                treant_hit = true;
                 hit.transform.gameObject.GetComponent<treant_script>().hitByPlayer();
+            } else if (hit.transform.gameObject.name.Contains("wolf") && !wolf_hit) {
+                wolf_hit = true;
+                hit.transform.gameObject.GetComponent<wolf_script>().hitByPlayer();
             }
         }
     }

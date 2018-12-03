@@ -68,6 +68,7 @@
     <Compile Include="Assets\Projects\finalProj\Level\DamageZone\PitfallA.cs" />
     <Compile Include="Assets\Projects\finalProj\Level\DamageZone\PitfallB.cs" />
     <Compile Include="Assets\Projects\finalProj\Level\DamageZone\PitfallC.cs" />
+    <Compile Include="Assets\Projects\finalProj\Level\Heals\campheal.cs" />
     <Compile Include="Assets\Projects\finalProj\Materials\SmearMats\SmearEffect.cs" />
     <Compile Include="Assets\Projects\finalProj\Prefabs\PyroParticles\Demo\DemoScript.cs" />
     <Compile Include="Assets\Projects\finalProj\Prefabs\PyroParticles\Demo\DemoScriptEditor.cs" />

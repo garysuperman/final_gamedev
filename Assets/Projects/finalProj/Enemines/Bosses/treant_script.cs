@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class treant_script : MonoBehaviour {
     //stats
-    [SerializeField] private int health = 20;
+    [SerializeField] private int health = 100;
 
     //speed = 0/idle, 1/run, 2/attack 1, 3/attack 2
     private const string speed = "speed";
@@ -127,7 +127,6 @@ public class treant_script : MonoBehaviour {
     {
         if (collision.gameObject.name.Contains("link"))
         {
-            Debug.Log(collision.gameObject.GetComponent<BoxCollider>());
             Physics.IgnoreCollision(collision.gameObject.GetComponent<BoxCollider>(), components[0]);
             Physics.IgnoreCollision(collision.gameObject.GetComponent<BoxCollider>(), components[1]);
             Physics.IgnoreCollision(collision.gameObject.GetComponent<BoxCollider>(), components[2]); //body
