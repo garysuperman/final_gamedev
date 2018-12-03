@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerScript : MonoBehaviour
 {
     //stats
-    [SerializeField] private int health = 5;
+    public HealthSystem healthSystem = new HealthSystem(100);
+    [SerializeField] public Slider healthBar;
+
 
     //speed = 0/idle, 1/run, 2/attack, 3/downward_thrust
     private const string speed = "speed";
@@ -145,8 +148,15 @@ public class PlayerScript : MonoBehaviour
     {
         if (name.Equals("treant"))
         {
-            health -= 1;
+            //health -= 1;
             //Debug.Log(health);
+            healthSystem.Damage(20);
+            healthBar.value = healthSystem.GetHealthInPercent();
+        }
+        if (name.Equals("pitfall"))
+        {
+            healthSystem.Damage(20);
+            healthBar.value = healthSystem.GetHealthInPercent();
         }
         if (!playerAnim.GetCurrentAnimatorStateInfo(0).IsName("damaged"))
             this.playerAnim.SetTrigger(damage);

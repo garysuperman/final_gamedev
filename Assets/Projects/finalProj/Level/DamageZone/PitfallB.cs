@@ -12,6 +12,7 @@ public class PitfallB : MonoBehaviour {
             cam.GetComponent<followPlayer>().lever();
             moving = collider.gameObject.GetComponent<PlayerScript>().getPositionBeforeDeath();
             collider.gameObject.transform.localPosition = moving;
+            collider.gameObject.GetComponent<PlayerScript>().wasHit("pitfall");
         }
     }
 }
