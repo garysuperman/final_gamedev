@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlaySound : MonoBehaviour {
 
     public AudioClip attack_sound;
+    public AudioClip jump_start;
+    public AudioClip landing_;
 
     public AudioSource audioS;
 
@@ -21,5 +23,15 @@ public class PlaySound : MonoBehaviour {
     void attacksound()
     {
         audioS.PlayOneShot(attack_sound);
+    }
+
+    void jumpstart()
+    {
+        audioS.PlayOneShot(jump_start);
+    }
+
+    void landing()
+    {
+        audioS.PlayOneShot(landing_);
     }
 }

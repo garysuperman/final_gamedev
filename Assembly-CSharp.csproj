@@ -111,6 +111,7 @@
     <Compile Include="Assets\Projects\finalProj\Scripts\Views\MainMenuScreen.cs" />
     <Compile Include="Assets\Projects\finalProj\Scripts\Views\PauseMenu.cs" />
     <Compile Include="Assets\Projects\finalProj\Scripts\Views\ResultScreen.cs" />
+    <Compile Include="Assets\Projects\finalProj\Scripts\WolfSound.cs" />
     <None Include="Assets\DOTween\DOTween43.xml" />
     <None Include="Assets\DOTween\DOTween46.xml" />
     <None Include="Assets\Projects\finalProj\Materials\toonShader.shader" />
