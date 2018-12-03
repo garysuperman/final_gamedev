@@ -18,14 +18,36 @@ public class wolf_script : MonoBehaviour {
     [SerializeField] private GameObject wolf;
     [SerializeField] private GameObject player;
     [SerializeField] private Collider collider;
+    [SerializeField] private Rigidbody rigidbody;
 
     // Use this for initialization
     void Start () {
 		
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+    // Update is called once per frame
+    void Update(){
+        Vector3 moving;
+        Vector3 rot = wolf.transform.rotation.eulerAngles;
+
+        if (distanceFromPlayer() < 50f){
+            if (distanceFromPlayer() > 35f){
+                this.wolf_anim.SetInteger(speed, 1);
+            }
+            else {
+                moving = rigidbody.velocity;
+                moving.y = 20;
+                rigidbody.velocity = moving;
+                this.wolf_anim.SetInteger(speed, 2);
+            }
+        } else{
+            this.wolf_anim.SetInteger(speed, 0);
+        }
+
+        
+
+    }
+    private float distanceFromPlayer(){
+        return Vector3.Distance(player.transform.position, wolf.transform.position);
+    }
 }

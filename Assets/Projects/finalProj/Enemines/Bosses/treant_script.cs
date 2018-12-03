@@ -22,7 +22,6 @@ public class treant_script : MonoBehaviour {
     // Use this for initialization
     void Start () {
         components = treant.GetComponents<BoxCollider>();
-        Debug.Log(components.Length);
     }
 	
 	// Update is called once per frame

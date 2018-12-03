@@ -59,7 +59,7 @@ public class PlayerScript : MonoBehaviour
             this.playerAnim.SetInteger(speed, 1);
             moving = player.transform.localPosition;
             if (!playerAnim.GetCurrentAnimatorStateInfo(0).IsName("attack") && takingDamage)
-                moving.x += 0.5f;
+                moving.x += 0.3f;
             player.transform.localPosition = moving;
 
         }
@@ -72,7 +72,7 @@ public class PlayerScript : MonoBehaviour
             this.playerAnim.SetInteger(speed, 1);
             moving = player.transform.localPosition;
             if (!playerAnim.GetCurrentAnimatorStateInfo(0).IsName("attack") && takingDamage)
-                moving.x -= 0.5f;
+                moving.x -= 0.3f;
             player.transform.localPosition = moving;
 
         }
