@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class treant_script : MonoBehaviour {
     //stats
-    [SerializeField] private int health = 5000;
+    [SerializeField] private int health = 20;
 
     //speed = 0/idle, 1/run, 2/attack 1, 3/attack 2
     private const string speed = "speed";
@@ -93,7 +93,7 @@ public class treant_script : MonoBehaviour {
     }
 
     public void hitByPlayer() {
-        health -= 10;
+        health -= 2;
         Debug.Log("treant :" +  health);
     }
 

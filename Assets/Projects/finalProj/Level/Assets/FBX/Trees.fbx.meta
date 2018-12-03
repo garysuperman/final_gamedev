@@ -3,44 +3,65 @@ guid: 34d8078221ba1b048bef75cbf84b01b7
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: Leaf
-    100002: Leaves
-    100004: Small-Tree
-    100006: Tree.001
-    100008: Tree.002
-    100010: Tree.003
-    100012: //RootNode
-    100014: Vert.010
-    400000: Leaf
-    400002: Leaves
-    400004: Small-Tree
-    400006: Tree.001
-    400008: Tree.002
-    400010: Tree.003
-    400012: //RootNode
-    400014: Vert.010
+    100000: Camera
+    100002: Lamp
+    100004: Leaf
+    100006: Leaves
+    100008: leaves
+    100010: leaves2
+    100012: leaves3
+    100014: Small-Tree
+    100016: Tree.001
+    100018: Tree.002
+    100020: Tree.003
+    100022: //RootNode
+    100024: Vert.010
+    400000: Camera
+    400002: Lamp
+    400004: Leaf
+    400006: Leaves
+    400008: leaves
+    400010: leaves2
+    400012: leaves3
+    400014: Small-Tree
+    400016: Tree.001
+    400018: Tree.002
+    400020: Tree.003
+    400022: //RootNode
+    400024: Vert.010
+    2000000: Camera
     2100000: No Name
     2300000: Leaf
     2300002: Leaves
-    2300004: Small-Tree
-    2300006: Tree.001
-    2300008: Tree.002
-    2300010: Tree.003
-    2300012: Vert.010
+    2300004: leaves
+    2300006: leaves2
+    2300008: leaves3
+    2300010: Small-Tree
+    2300012: Tree.001
+    2300014: Tree.002
+    2300016: Tree.003
+    2300018: Vert.010
     3300000: Leaf
     3300002: Leaves
-    3300004: Small-Tree
-    3300006: Tree.001
-    3300008: Tree.002
-    3300010: Tree.003
-    3300012: Vert.010
-    4300000: Vert.010
-    4300002: Leaves
-    4300004: Leaf
-    4300006: Small-Tree
-    4300008: Tree.001
-    4300010: Tree.002
-    4300012: Tree.003
+    3300004: leaves
+    3300006: leaves2
+    3300008: leaves3
+    3300010: Small-Tree
+    3300012: Tree.001
+    3300014: Tree.002
+    3300016: Tree.003
+    3300018: Vert.010
+    4300000: leaves3
+    4300002: leaves2
+    4300004: leaves
+    4300006: Tree.003
+    4300008: Tree.002
+    4300010: Tree.001
+    4300012: Small-Tree
+    4300014: Leaf
+    4300016: Leaves
+    4300018: Vert.010
+    10800000: Lamp
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -72,7 +93,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 0.25
     meshCompression: 0
     addColliders: 0
     importVisibility: 1
@@ -96,7 +117,7 @@ ModelImporter:
     hasPreviousCalculatedGlobalScale: 0
   tangentSpace:
     normalSmoothAngle: 60
-    normalImportMode: 0
+    normalImportMode: 1
     tangentImportMode: 3
     normalCalculationMode: 4
   importAnimation: 1
@@ -113,6 +134,7 @@ ModelImporter:
     legStretch: 0.05
     feetSpacing: 0
     rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1

@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerScript : MonoBehaviour
 {
     //stats
-    [SerializeField] private int health = 1000;
+    [SerializeField] private int health = 5;
 
     //speed = 0/idle, 1/run, 2/attack, 3/downward_thrust
     private const string speed = "speed";
@@ -134,7 +134,7 @@ public class PlayerScript : MonoBehaviour
     {
         if (name.Equals("treant"))
         {
-            health -= 10;
+            health -= 1;
             //Debug.Log(health);
         }
         if (!playerAnim.GetCurrentAnimatorStateInfo(0).IsName("damaged"))
