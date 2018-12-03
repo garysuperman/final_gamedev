@@ -973,6 +973,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _frameLag: 0
+--- !u!1 &839987814 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100654, guid: 82bd42e931902ed4fa1600e178d5759e,
+    type: 3}
+  m_PrefabInternal: {fileID: 1303829040}
+--- !u!65 &839987815
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 839987814}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.62, y: 4.13, z: 7.94}
+  m_Center: {x: 0, y: 3.95, z: 0}
 --- !u!1 &866146404
 GameObject:
   m_ObjectHideFlags: 0
@@ -6842,11 +6859,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400654, guid: 82bd42e931902ed4fa1600e178d5759e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.87659836
+      value: -41.3
       objectReference: {fileID: 0}
     - target: {fileID: 400654, guid: 82bd42e931902ed4fa1600e178d5759e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -14.210857
+      value: -8.12
       objectReference: {fileID: 0}
     - target: {fileID: 400654, guid: 82bd42e931902ed4fa1600e178d5759e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6878,8 +6895,12 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100654, guid: 82bd42e931902ed4fa1600e178d5759e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: 82bd42e931902ed4fa1600e178d5759e, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: c937e09f8f0ba5e45aaf4ab49ff40c9e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82bd42e931902ed4fa1600e178d5759e, type: 3}
   m_IsPrefabAsset: 0
