@@ -17,13 +17,13 @@ public class treant_script : MonoBehaviour {
     [SerializeField] private Animator treant_anim;
     [SerializeField] private GameObject treant;
     [SerializeField] private GameObject player; 
-    [SerializeField] private Collider collider;
-    
+    private BoxCollider[] components;
 
     // Use this for initialization
     void Start () {
-		
-	}
+        components = treant.GetComponents<BoxCollider>();
+        Debug.Log(components.Length);
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -122,5 +122,17 @@ public class treant_script : MonoBehaviour {
         } 
         return 0;
         
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.name.Contains("link"))
+        {
+            Debug.Log(collision.gameObject.GetComponent<BoxCollider>());
+            Physics.IgnoreCollision(collision.gameObject.GetComponent<BoxCollider>(), components[0]);
+            Physics.IgnoreCollision(collision.gameObject.GetComponent<BoxCollider>(), components[1]);
+            Physics.IgnoreCollision(collision.gameObject.GetComponent<BoxCollider>(), components[2]); //body
+            
+        }
     }
 }

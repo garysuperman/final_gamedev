@@ -278,7 +278,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 36486646}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -118.7, y: -26.949999, z: 27.430065}
+  m_LocalPosition: {x: 108.4, y: -26.949999, z: 27.430065}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 470884966}
@@ -5325,7 +5325,6 @@ MonoBehaviour:
   treant_anim: {fileID: 640450436}
   treant: {fileID: 640450435}
   player: {fileID: 1295088777}
-  collider: {fileID: 640450438}
 --- !u!65 &640450440
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15151,7 +15150,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400654, guid: 82bd42e931902ed4fa1600e178d5759e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.7
+      value: -5.4
       objectReference: {fileID: 0}
     - target: {fileID: 400654, guid: 82bd42e931902ed4fa1600e178d5759e, type: 3}
       propertyPath: m_LocalRotation.x
