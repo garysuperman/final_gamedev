@@ -41,7 +41,7 @@ public class wolf_script : MonoBehaviour {
         //Debug.Log(health);
 
         if (distanceFromPlayer() < 50f && cooldown == 0 && healthSystem.GetHealth() >0){
-            healthBar.gameObject.SetActive(true);
+            //healthBar.gameObject.SetActive(true);
             this.wolf_anim.SetInteger(speed, 1);
             
             facing = faced();
@@ -87,8 +87,8 @@ public class wolf_script : MonoBehaviour {
                 }
             }
             this.wolf_anim.SetInteger(speed, 0);
-            if (distanceFromPlayer() > 50)
-                healthBar.gameObject.SetActive(false);
+            //if (distanceFromPlayer() > 50)
+                //healthBar.gameObject.SetActive(false);
         } 
 
         if(healthSystem.GetHealth() <= 0) {
@@ -109,7 +109,7 @@ public class wolf_script : MonoBehaviour {
         else {
             Physics.IgnoreCollision(player.GetComponent<BoxCollider>(), collider);
             this.wolf_anim.SetTrigger(die);
-            healthBar.gameObject.SetActive(false);
+            //healthBar.gameObject.SetActive(false);
         }
         
     }
