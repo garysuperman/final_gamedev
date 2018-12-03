@@ -54,7 +54,7 @@ public class PlayerScript : MonoBehaviour {
             this.playerAnim.SetInteger(speed, 1);
             moving = player.transform.localPosition;
             if(!playerAnim.GetCurrentAnimatorStateInfo(0).IsName("attack") && takingDamage) 
-                moving.x += 0.4f;
+                moving.x += 0.5f;
             player.transform.localPosition = moving;
             
         } else if (Input.GetKey(KeyCode.A)) {
@@ -65,7 +65,7 @@ public class PlayerScript : MonoBehaviour {
             this.playerAnim.SetInteger(speed, 1);
             moving = player.transform.localPosition;
             if (!playerAnim.GetCurrentAnimatorStateInfo(0).IsName("attack") && takingDamage)    
-                moving.x -= 0.4f;
+                moving.x -= 0.5f;
             player.transform.localPosition = moving;
 
         } else {
@@ -84,7 +84,7 @@ public class PlayerScript : MonoBehaviour {
             this.playerAnim.SetBool(onAir, true);
             this.playerAnim.SetBool(jump, true);
             moving = rigidbody.velocity;
-            moving.y = 40;
+            moving.y = 50;
             rigidbody.velocity = moving;
         } else if (jumped) {
             this.playerAnim.SetBool(jump, false);
