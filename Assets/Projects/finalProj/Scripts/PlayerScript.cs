@@ -21,6 +21,8 @@ public class PlayerScript : MonoBehaviour
     //to Determine if Player is on ground
     private float distToGround;
     private float playerWidth;
+    private int lastJumpedSavePoint = 0;
+    private Vector3 LastJumped;
 
     [SerializeField] private Animator playerAnim;
     [SerializeField] private GameObject player;
@@ -98,6 +100,7 @@ public class PlayerScript : MonoBehaviour
             moving = rigidbody.velocity;
             moving.y = 50;
             rigidbody.velocity = moving;
+            LastJumped = player.transform.localPosition;
         }
         else if (jumped)
         {
@@ -128,6 +131,14 @@ public class PlayerScript : MonoBehaviour
             }
         }
 
+    }
+
+    public void setPositionBeforeDeath(Vector3 position) {
+        LastJumped = position;
+    }
+
+    public Vector3 getPositionBeforeDeath() {
+        return LastJumped;
     }
 
     public void wasHit(string name)

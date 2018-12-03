@@ -64,8 +64,10 @@
     <Compile Include="Assets\changeToIdle.cs" />
     <Compile Include="Assets\Projects\finalProj\Enemines\Bosses\treant_script.cs" />
     <Compile Include="Assets\Projects\finalProj\Enemines\Grunts\wolf_script.cs" />
-    <Compile Include="Assets\Projects\finalProj\Level\DamageZone Scripts\PitfallA.cs" />
-    <Compile Include="Assets\Projects\finalProj\Level\DamageZone Scripts\PitfallB.cs" />
+    <Compile Include="Assets\Projects\finalProj\Level\DamageZone\MovingPlatform.cs" />
+    <Compile Include="Assets\Projects\finalProj\Level\DamageZone\PitfallA.cs" />
+    <Compile Include="Assets\Projects\finalProj\Level\DamageZone\PitfallB.cs" />
+    <Compile Include="Assets\Projects\finalProj\Level\DamageZone\PitfallC.cs" />
     <Compile Include="Assets\Projects\finalProj\Materials\SmearMats\SmearEffect.cs" />
     <Compile Include="Assets\Projects\finalProj\Prefabs\PyroParticles\Demo\DemoScript.cs" />
     <Compile Include="Assets\Projects\finalProj\Prefabs\PyroParticles\Demo\DemoScriptEditor.cs" />
