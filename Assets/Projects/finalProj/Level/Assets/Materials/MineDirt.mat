@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Stone
+  m_Name: MineDirt
   m_Shader: {fileID: 4800000, guid: 65f229f444ff1d4439b692f237060e61, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -73,5 +73,5 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.4716981, g: 0.4716981, b: 0.4716981, a: 1}
+    - _Color: {r: 0.3301887, g: 0.24059658, b: 0.1791118, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
