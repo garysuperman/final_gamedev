@@ -9,7 +9,7 @@ public class PitfallA : MonoBehaviour {
     void OnTriggerEnter(Collider collider) {
         Vector3 moving;
         if (collider.gameObject.name.Contains("link")) {
-            cam.GetComponent<followPlayer>().lever();
+            cam.GetComponent<followPlayer>().turnoff();
         }
     }
 }

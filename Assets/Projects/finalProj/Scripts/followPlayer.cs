@@ -31,10 +31,11 @@ public class followPlayer : MonoBehaviour {
         
     }
 
-    public void  lever(){
-        if (enabled)
-            enabled = false;
-        else enabled = true;
+    public void turnon() {
+        enabled = true;
     }
 
+    public void turnoff() {
+        enabled = false;
+    }
 }

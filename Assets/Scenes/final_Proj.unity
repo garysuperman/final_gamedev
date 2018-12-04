@@ -762,7 +762,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 36486646}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -143, y: -45.2, z: 27.430065}
+  m_LocalPosition: {x: 803.9, y: 73.5, z: 27.430065}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 470884966}
@@ -4893,7 +4893,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -16973,6 +16973,7 @@ GameObject:
   - component: {fileID: 738947477}
   - component: {fileID: 738947479}
   - component: {fileID: 738947478}
+  - component: {fileID: 738947480}
   m_Layer: 0
   m_Name: Dirt
   m_TagString: Untagged
@@ -17038,6 +17039,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 738947476}
   m_Mesh: {fileID: 4300010, guid: b214b9fd9d473384e90466f17a62eae8, type: 3}
+--- !u!65 &738947480
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 738947476}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.020135704, y: 0.02018571, z: 0.016855905}
+  m_Center: {x: -0.000120976474, y: 0.00012858874, z: -0.0015696355}
 --- !u!1001 &739213570
 Prefab:
   m_ObjectHideFlags: 0
@@ -50903,7 +50916,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
