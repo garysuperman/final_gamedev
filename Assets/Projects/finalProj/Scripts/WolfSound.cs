@@ -5,7 +5,7 @@ using UnityEngine;
 public class WolfSound : MonoBehaviour {
 
     public AudioClip idle_;
-
+    public AudioClip running_;
 
     public AudioSource audioS;
 
@@ -24,5 +24,10 @@ public class WolfSound : MonoBehaviour {
     void idle()
     {
         audioS.PlayOneShot(idle_);
+    }
+
+    void running()
+    {
+        audioS.PlayOneShot(running_);
     }
 }
