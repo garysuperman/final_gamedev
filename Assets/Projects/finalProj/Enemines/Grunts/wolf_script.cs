@@ -5,9 +5,9 @@ using UnityEngine.UI;
 
 public class wolf_script : MonoBehaviour {
     //stats
-    //[SerializeField] private int health = 10;
-    public HealthSystem healthSystem = new HealthSystem(10);
-    [SerializeField] public Slider healthBar;
+    private int health = 10;
+    //public HealthSystem healthSystem = new HealthSystem(10);
+    //[SerializeField] public Slider healthBar;
 
     //speed = 0/idle, 1/run, 2/attack 1, 3/attack 2
     private const string speed = "speed";
@@ -18,7 +18,7 @@ public class wolf_script : MonoBehaviour {
     private int facing = 0;
     private const float TURN_AMOUNT_MODIFIER = 500.0f;
     private int cooldown = 0;
-
+    private float distance = 0;
 
     [SerializeField] private Animator wolf_anim;
     [SerializeField] private GameObject wolf;
@@ -28,7 +28,14 @@ public class wolf_script : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        healthBar.value = healthSystem.GetHealthInPercent();
+        //healthBar.value = healthSystem.GetHealthInPercent();
+        if (this.name.Contains("wolf")) {
+            distance = 50f;
+            health = 10;
+        } else {
+            distance = 100f;
+            health = 25;
+        }
     }
 
     // Update is called once per frame
@@ -37,18 +44,16 @@ public class wolf_script : MonoBehaviour {
         Vector3 rot = wolf.transform.rotation.eulerAngles;
         bool onTheMove = wolf_anim.GetCurrentAnimatorStateInfo(0).IsName("wolf_running");
         bool takingDamage = wolf_anim.GetCurrentAnimatorStateInfo(0).IsName("wolf_damaged");
+         float heightDistance = Mathf.Abs(player.transform.localPosition.y - this.transform.localPosition.y);
 
-        //Debug.Log(health);
-
-        if (distanceFromPlayer() < 50f && cooldown == 0 && healthSystem.GetHealth() >0){
+        if (distanceFromPlayer() < distance && cooldown == 0 && health >0){
             //healthBar.gameObject.SetActive(true);
             this.wolf_anim.SetInteger(speed, 1);
-            
             facing = faced();
 
             if (facing == 0) {
                 //x == 90
-                if (distanceFromPlayer() < 50f && onTheMove && !takingDamage) {
+                if (distanceFromPlayer() < distance && onTheMove && !takingDamage) {
                     Physics.IgnoreCollision(player.GetComponent<BoxCollider>(), collider, false);
                     moving = wolf.transform.localPosition;
                     moving.x += Time.deltaTime * 50;
@@ -61,7 +66,7 @@ public class wolf_script : MonoBehaviour {
 
             } else {
                 //x = 270
-                if (distanceFromPlayer() < 50f && onTheMove && !takingDamage) {
+                if (distanceFromPlayer() < distance && onTheMove && !takingDamage) {
                     Physics.IgnoreCollision(player.GetComponent<BoxCollider>(), collider, false);
                     moving = wolf.transform.localPosition;
                     moving.x -= Time.deltaTime * 50;
@@ -73,7 +78,7 @@ public class wolf_script : MonoBehaviour {
                 }
 
             }
-        } else if(healthSystem.GetHealth() > 0){
+        } else if(health > 0){
             if(cooldown > 0) {
                 cooldown -= 1;
                 if (facing == 0) {
@@ -91,7 +96,7 @@ public class wolf_script : MonoBehaviour {
                 //healthBar.gameObject.SetActive(false);
         } 
 
-        if(healthSystem.GetHealth() <= 0) {
+        if(health <= 0) {
             Physics.IgnoreCollision(player.GetComponent<BoxCollider>(), collider);
             this.wolf_anim.SetTrigger(die);
         }
@@ -99,10 +104,10 @@ public class wolf_script : MonoBehaviour {
     }
 
     public void hitByPlayer() {
-        //health -= 1;
-        healthSystem.Damage(1);
-        healthBar.value = healthSystem.GetHealthInPercent();
-        if (healthSystem.GetHealth() > 0) {
+        health -= 1;
+        //healthSystem.Damage(1);
+        //healthBar.value = healthSystem.GetHealthInPercent();
+        if (health > 0) {
             this.wolf_anim.SetTrigger(damaged);
             cooldown = 0;
         }
@@ -132,8 +137,10 @@ public class wolf_script : MonoBehaviour {
     void OnCollisionEnter(Collision collision) {
         Vector3 moving;
         if (collision.gameObject.name.Contains("link")) {
-            Physics.IgnoreCollision(collision.gameObject.GetComponent<BoxCollider>(), collider);
-            cooldown = 30;
+            Physics.IgnoreCollision(player.GetComponent<BoxCollider>(), collider);
+            if (this.name.Contains("BigWold"))
+                cooldown = 60;
+            else cooldown = 45;
             collision.gameObject.GetComponent<PlayerScript>().wasHit("wolf");
             if (facing == 0) {
                 moving = player.transform.localPosition;

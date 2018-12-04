@@ -172,8 +172,6 @@ public class PlayerScript : MonoBehaviour
 
     private void attack()
     {
-        bool treant_hit = false;
-        bool wolf_hit = false;
         //stab
         Vector3 stab = transform.position;
         Ray ray = new Ray();
@@ -196,11 +194,12 @@ public class PlayerScript : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, 8.68f*1.5f))
         {
-            if (hit.transform.gameObject.name.Contains("treant") && !treant_hit) {
-                treant_hit = true;
+            if (hit.transform.gameObject.name.Contains("treant")) {
                 hit.transform.gameObject.GetComponent<treant_script>().hitByPlayer();
-            } else if (hit.transform.gameObject.name.Contains("wolf") && !wolf_hit) {
-                wolf_hit = true;
+            } else if (hit.transform.gameObject.name.Contains("wolf")) {
+                hit.transform.gameObject.GetComponent<wolf_script>().hitByPlayer();
+            }
+            else if (hit.transform.gameObject.name.Contains("BigWolf")) {
                 hit.transform.gameObject.GetComponent<wolf_script>().hitByPlayer();
             }
         }
