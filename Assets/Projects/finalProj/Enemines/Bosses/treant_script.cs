@@ -152,7 +152,7 @@ public class treant_script : MonoBehaviour {
         if (collision.gameObject.name.Contains("link"))
         {
             Physics.IgnoreCollision(collision.gameObject.GetComponent<BoxCollider>(), components[0]);
-            Physics.IgnoreCollision(collision.gameObject.GetComponent<BoxCollider>(), components[1]);
+            //Physics.IgnoreCollision(collision.gameObject.GetComponent<BoxCollider>(), components[1]);
             Physics.IgnoreCollision(collision.gameObject.GetComponent<BoxCollider>(), components[2]); //body
             
         }
