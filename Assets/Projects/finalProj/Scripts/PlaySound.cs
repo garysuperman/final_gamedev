@@ -7,6 +7,7 @@ public class PlaySound : MonoBehaviour {
     public AudioClip attack_sound;
     public AudioClip jump_start;
     public AudioClip landing_;
+    public AudioClip damage_;
 
     public AudioSource audioS;
 
@@ -33,5 +34,10 @@ public class PlaySound : MonoBehaviour {
     void landing()
     {
         audioS.PlayOneShot(landing_);
+    }
+
+    void damaged()
+    {
+        audioS.PlayOneShot(damage_);
     }
 }
