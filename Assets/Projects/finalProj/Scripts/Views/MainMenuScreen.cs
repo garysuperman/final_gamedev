@@ -5,15 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuScreen : View {
 
-    [SerializeField] public GameObject mainMenuUI;
-
 	void Awake() {
 
 	}
 
 	// Use this for initialization
 	void Start () {
-        mainMenuUI.SetActive(true);
 	}
 
     private void Update()
