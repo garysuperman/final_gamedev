@@ -32,9 +32,12 @@ public class wolf_script : MonoBehaviour {
         if (this.name.Contains("wolf")) {
             distance = 50f;
             health = 10;
-        } else {
+        } else if (this.name.Contains("BigWolf")){
             distance = 100f;
             health = 25;
+        } else if (this.name.Contains("BlackWolf")) {
+            distance = 50f;
+            health = 15;
         }
     }
 
@@ -138,9 +141,7 @@ public class wolf_script : MonoBehaviour {
         Vector3 moving;
         if (collision.gameObject.name.Contains("link")) {
             Physics.IgnoreCollision(player.GetComponent<BoxCollider>(), collider);
-            if (this.name.Contains("BigWold"))
-                cooldown = 60;
-            else cooldown = 45;
+            cooldown = 45;
             collision.gameObject.GetComponent<PlayerScript>().wasHit("wolf");
             if (facing == 0) {
                 moving = player.transform.localPosition;
