@@ -7,6 +7,7 @@ public class treant_script : MonoBehaviour {
     //stats
     public HealthSystem healthSystem = new HealthSystem(100);
     [SerializeField] public Slider healthBar;
+    [SerializeField] public Text nameText;
 
     //speed = 0/idle, 1/run, 2/attack 1, 3/attack 2
     private const string speed = "speed";
@@ -41,6 +42,7 @@ public class treant_script : MonoBehaviour {
             if (!healthBar.gameObject.activeSelf)
             {
                 healthBar.gameObject.SetActive(true);
+                nameText.gameObject.SetActive(true);
             }
 
             if (distanceFromPlayer() > 35f) {
@@ -93,6 +95,7 @@ public class treant_script : MonoBehaviour {
             {
                 Debug.Log("in");
                 healthBar.gameObject.SetActive(false);
+                nameText.gameObject.SetActive(false);
             }
         }
 
@@ -118,6 +121,7 @@ public class treant_script : MonoBehaviour {
             Physics.IgnoreCollision(player.GetComponent<BoxCollider>(), components[2]);
             //death animation
             healthBar.gameObject.SetActive(false);
+            nameText.gameObject.SetActive(false);
         }
     }
 

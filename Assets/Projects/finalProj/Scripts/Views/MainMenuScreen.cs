@@ -16,26 +16,19 @@ public class MainMenuScreen : View {
 
     private void Update()
     {
-        /*if (ViewHandler.Instance.IsViewActive("MainMenu") && Input.GetKeyDown(KeyCode.Escape))
-        {
-            TwoChoiceDialog dialog = (TwoChoiceDialog)DialogBuilder.Create(DialogBuilder.DialogType.CHOICE_DIALOG);
-            dialog.SetMessage("Are you sure you want to quit?");
-            dialog.SetConfirmText("YES");
-            dialog.SetCancelText("NO");
 
-            dialog.SetOnConfirmListener(() =>
-            {
-                Application.Quit();
-            });
-        }*/
     }
 
     public void OnPlayClicked() {
-        Time.timeScale = 1f;
 		LoadManager.Instance.LoadScene (SceneNames.GAME_SCENE);	
 	}
 
 	public void OnQuitClicked() {
 		Application.Quit();
 	}
+
+    public void OnInstructionsClicked()
+    {
+        LoadManager.Instance.LoadScene(SceneNames.INSTRUCTIONS_SCENE);
+    }
 }

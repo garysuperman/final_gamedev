@@ -10,8 +10,10 @@ public class ViewNames {
 	public const string TEST_SCREEN_NAME = "TestScreen";
 	public const string PAUSE_SCREEN_NAME = "PauseScreen";
 	public const string RESULT_SCREEN_NAME = "ResultScreen";
+    public const string INSTRUCTIONS_SCREEN_NAME = "InstructionsScreenAesir";
+    public const string MAIN_SCREEN_NAME = "MainMenuScreenAesir";
 
-	public class DialogNames {
+    public class DialogNames {
 		public const string TWO_CHOICE_DIALOG_NAME = "TwoChoiceDialog";
 	}
 }

@@ -8,4 +8,5 @@ using System.Collections.Generic;
 public class SceneNames {
 	public const string MAIN_MENU_SCENE = "MainMenuScene";
 	public const string GAME_SCENE = "final_Proj";
+    public const string INSTRUCTIONS_SCENE = "InstructionsScene";
 }

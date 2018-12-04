@@ -8,9 +8,11 @@ public class DeathMenu : MonoBehaviour {
 
     [SerializeField] public GameObject deathMenuUI;
 
+    [SerializeField] public GameObject winMenuUI;
+
     // Update is called once per frame
     void Update () {
-		if (player.GetComponent<PlayerScript>().healthSystem.GetHealth() <= 0)
+		if (player.GetComponent<PlayerScript>().healthSystem.GetHealth() <= 0 && !winMenuUI.activeSelf)
         {
             deathMenuUI.SetActive(true);
             Time.timeScale = 0f;
