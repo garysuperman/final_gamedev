@@ -9,7 +9,7 @@ public class MovingPlatform : MonoBehaviour {
 
     [SerializeField] GameObject player;
 
-    int target = 75;
+    int target = 75*2;
 	// Use this for initialization
 	void Start () {
         startingPoint = this.transform.localPosition;
@@ -22,12 +22,12 @@ public class MovingPlatform : MonoBehaviour {
 		if(target > 0 && backNForth) {
             target -= 1;
             moving = this.transform.localPosition ;
-            moving.x -= Time.deltaTime * 30;
+            moving.x -= 0.25f;
             this.transform.localPosition = moving;
 
             if (playerOn) {
                 moving = player.transform.localPosition;
-                moving.x -= Time.deltaTime * 30;
+                moving.x -= 0.25f;
                 player.transform.localPosition = moving;
             }
 
@@ -35,15 +35,15 @@ public class MovingPlatform : MonoBehaviour {
             backNForth = false;
         }
 
-        if (target < 75 && !backNForth) {
+        if (target < (75 * 2) && !backNForth) {
             target += 1;
             moving = this.transform.localPosition ;
-            moving.x += Time.deltaTime * 30;
+            moving.x += 0.25f;
             this.transform.localPosition = moving;
 
             if (playerOn) {
                 moving = player.transform.localPosition;
-                moving.x += Time.deltaTime * 30;
+                moving.x += 0.25f;
                 player.transform.localPosition = moving;
             }
         } else {
