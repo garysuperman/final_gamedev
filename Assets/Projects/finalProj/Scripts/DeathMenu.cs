@@ -15,13 +15,13 @@ public class DeathMenu : MonoBehaviour {
 		if (player.GetComponent<PlayerScript>().healthSystem.GetHealth() <= 0 && !winMenuUI.activeSelf)
         {
             deathMenuUI.SetActive(true);
-            Time.timeScale = 0f;
+            //Time.timeScale = 0f;
         }
 	}
 
     public void OnMainMenuClicked()
     {
-        Time.timeScale = 1f;
+        //Time.timeScale = 1f;
         LoadManager.Instance.LoadScene(SceneNames.MAIN_MENU_SCENE);
     }
 
