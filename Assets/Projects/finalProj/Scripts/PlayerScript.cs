@@ -105,7 +105,7 @@ public class PlayerScript : MonoBehaviour
                 this.playerAnim.SetBool(onAir, true);
                 this.playerAnim.SetBool(jump, true);
 
-                rigidbody.AddForce(0, 60, 0, ForceMode.Impulse);
+                rigidbody.AddForce(0, 70, 0, ForceMode.Impulse);
                 //moving = rigidbody.velocity;
                 //moving.y = 50;
                 //rigidbody.velocity = moving;
@@ -126,7 +126,7 @@ public class PlayerScript : MonoBehaviour
             if (facing == 0)
             {
                 //x == 90
-                if (rot.y > 90)
+                if (!(rot.y <= 90))
                 {
                     player.transform.Rotate(Vector3.down * Time.deltaTime * TURN_AMOUNT_MODIFIER, Space.World);
                 }
@@ -134,7 +134,7 @@ public class PlayerScript : MonoBehaviour
             else if (facing == 1)
             {
                 //x = 270
-                if (rot.y < 270)
+                if (!(rot.y >= 270))
                 {
                     player.transform.Rotate(Vector3.up * Time.deltaTime * TURN_AMOUNT_MODIFIER, Space.World);
                 }

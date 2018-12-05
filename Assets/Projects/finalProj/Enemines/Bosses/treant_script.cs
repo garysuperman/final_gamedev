@@ -71,7 +71,7 @@ public class treant_script : MonoBehaviour {
                     moving.x += 0.35f;
                     treant.transform.localPosition = moving;
                 }
-                if (rot.y > 90 && !attacking) {
+                if (!(rot.y <= 90) && !attacking) {
                     this.treant_anim.SetInteger(speed, 0);
                     treant.transform.Rotate(Vector3.down * Time.deltaTime * TURN_AMOUNT_MODIFIER, Space.World);
                 }
@@ -83,7 +83,7 @@ public class treant_script : MonoBehaviour {
                     moving.x -= 0.35f;
                     treant.transform.localPosition = moving;
                 }
-                if (rot.y < 270 && !attacking) {
+                if (!(rot.y >= 270) && !attacking) {
                     this.treant_anim.SetInteger(speed, 0);
                     treant.transform.Rotate(Vector3.up * Time.deltaTime * TURN_AMOUNT_MODIFIER, Space.World);
                 }

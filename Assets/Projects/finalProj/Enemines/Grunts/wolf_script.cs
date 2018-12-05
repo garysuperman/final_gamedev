@@ -62,7 +62,7 @@ public class wolf_script : MonoBehaviour {
                     moving.x += Time.deltaTime * 50;
                     wolf.transform.localPosition = moving;
                 } 
-                if (rot.y > 90) {
+                if (!(rot.y <= 90)) {
                     this.wolf_anim.SetInteger(speed, 0);
                     wolf.transform.Rotate(Vector3.down * Time.deltaTime * TURN_AMOUNT_MODIFIER, Space.World);
                 }
@@ -75,7 +75,7 @@ public class wolf_script : MonoBehaviour {
                     moving.x -= Time.deltaTime * 50;
                     wolf.transform.localPosition = moving;
                 } 
-                if (rot.y < 270) {
+                if (!(rot.y >= 270)) {
                     this.wolf_anim.SetInteger(speed, 0);
                     wolf.transform.Rotate(Vector3.up * Time.deltaTime * TURN_AMOUNT_MODIFIER, Space.World);
                 }
