@@ -19,7 +19,6 @@ public class wolf_script : MonoBehaviour {
     private const float TURN_AMOUNT_MODIFIER = 500.0f;
     private int cooldown = 0;
     private float distance = 0;
-    private BoxCollider[] components;
 
     [SerializeField] private Animator wolf_anim;
     [SerializeField] private GameObject wolf;
@@ -29,7 +28,6 @@ public class wolf_script : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        components = wolf.GetComponents<BoxCollider>();
         //healthBar.value = healthSystem.GetHealthInPercent();
         if (this.name.Contains("wolf")) {
             distance = 50f;
@@ -72,8 +70,7 @@ public class wolf_script : MonoBehaviour {
             } else {
                 //x = 270
                 if (distanceFromPlayer() < distance && onTheMove && !takingDamage) {
-                    Physics.IgnoreCollision(player.GetComponent<BoxCollider>(), components[0], false);
-                    Physics.IgnoreCollision(player.GetComponent<BoxCollider>(), components[1], false);
+                    Physics.IgnoreCollision(player.GetComponent<BoxCollider>(), collider, false);
                     moving = wolf.transform.localPosition;
                     moving.x -= Time.deltaTime * 50;
                     wolf.transform.localPosition = moving;
@@ -103,8 +100,7 @@ public class wolf_script : MonoBehaviour {
         } 
 
         if(health <= 0) {
-            Physics.IgnoreCollision(player.GetComponent<BoxCollider>(), components[0]);
-            Physics.IgnoreCollision(player.GetComponent<BoxCollider>(), components[1]);
+            Physics.IgnoreCollision(player.GetComponent<BoxCollider>(), collider);
             this.wolf_anim.SetTrigger(die);
         }
 
@@ -144,8 +140,7 @@ public class wolf_script : MonoBehaviour {
     void OnCollisionEnter(Collision collision) {
         Vector3 moving;
         if (collision.gameObject.name.Contains("link")) {
-            Physics.IgnoreCollision(player.GetComponent<BoxCollider>(), components[0]);
-            Physics.IgnoreCollision(player.GetComponent<BoxCollider>(), components[1]);
+            Physics.IgnoreCollision(player.GetComponent<BoxCollider>(), collider);
             cooldown = 45;
             collision.gameObject.GetComponent<PlayerScript>().wasHit("wolf");
             if (facing == 0) {
