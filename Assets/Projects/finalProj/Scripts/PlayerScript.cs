@@ -104,10 +104,12 @@ public class PlayerScript : MonoBehaviour
             {
                 this.playerAnim.SetBool(onAir, true);
                 this.playerAnim.SetBool(jump, true);
-                moving = rigidbody.velocity;
-                moving.y = 50;
-                rigidbody.velocity = moving;
-                LastJumped = player.transform.localPosition;
+
+                rigidbody.AddForce(0, 60, 0, ForceMode.Impulse);
+                //moving = rigidbody.velocity;
+                //moving.y = 50;
+                //rigidbody.velocity = moving;
+                //LastJumped = player.transform.localPosition;
             }
             else if (jumped)
             {
