@@ -51,6 +51,7 @@ public class PlayerScript : MonoBehaviour
             bool airborn = this.playerAnim.GetBool(onAir);
             int crrntSpeed = this.playerAnim.GetInteger(speed);
             bool takingDamage = !playerAnim.GetCurrentAnimatorStateInfo(0).IsName("damaged");
+            bool aheadBlocked = ObstructionAhead();
 
             if (!isGrounded() && !airborn)
             {
@@ -66,7 +67,7 @@ public class PlayerScript : MonoBehaviour
                     facing = 0;
                 this.playerAnim.SetInteger(speed, 1);
                 moving = player.transform.localPosition;
-                if (!playerAnim.GetCurrentAnimatorStateInfo(0).IsName("attack") && takingDamage)
+                if (!playerAnim.GetCurrentAnimatorStateInfo(0).IsName("attack") && takingDamage && !aheadBlocked)
                     moving.x += Time.deltaTime * 30; 
                 player.transform.localPosition = moving;
 
@@ -79,7 +80,7 @@ public class PlayerScript : MonoBehaviour
                     facing = 1;
                 this.playerAnim.SetInteger(speed, 1);
                 moving = player.transform.localPosition;
-                if (!playerAnim.GetCurrentAnimatorStateInfo(0).IsName("attack") && takingDamage)
+                if (!playerAnim.GetCurrentAnimatorStateInfo(0).IsName("attack") && takingDamage && !aheadBlocked)
                     moving.x -= Time.deltaTime * 30;
                 player.transform.localPosition = moving;
 
@@ -206,6 +207,43 @@ public class PlayerScript : MonoBehaviour
                 hit.transform.gameObject.GetComponent<wolf_script>().hitByPlayer();
             }
         }
+    }
+
+    private bool ObstructionAhead() {
+        Vector3 check = transform.position;
+        Ray rayU = new Ray();
+        Ray rayM = new Ray();
+        Ray rayD = new Ray();
+        RaycastHit hit;
+        if (facing == 0) {
+            //left
+            rayD = new Ray(check, -Vector3.left);
+            check.y += collider.bounds.extents.y;
+            rayM = new Ray(check, -Vector3.left);
+            check.y += collider.bounds.extents.y;
+            rayU = new Ray(check, -Vector3.left);
+
+        } else {
+            //right
+            rayD = new Ray(check, -Vector3.right);
+            check.y += collider.bounds.extents.y;
+            rayM = new Ray(check, -Vector3.right);
+            check.y += collider.bounds.extents.y;
+            rayU = new Ray(check, -Vector3.right);
+        }
+
+        if (Physics.Raycast(rayU, out hit, playerWidth) ||
+            Physics.Raycast(rayM, out hit, playerWidth) ||
+            Physics.Raycast(rayD, out hit, playerWidth)) {
+            if (!hit.transform.gameObject.name.Contains("Pitfall")) {
+                if (hit.transform.gameObject.name.Contains("olf")) {
+                    if (hit.transform.gameObject.GetComponent<wolf_script>().isDead())
+                        return false;
+                }
+                else return true;
+            } else return false;
+        }
+        return false;
     }
 
     private bool isGrounded()

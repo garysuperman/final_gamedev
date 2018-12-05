@@ -100,11 +100,16 @@ public class wolf_script : MonoBehaviour {
         } 
 
         if(health <= 0) {
-            Physics.IgnoreCollision(player.GetComponent<BoxCollider>(), collider);
             this.wolf_anim.SetTrigger(die);
         }
 
     }
+
+    public bool isDead() {
+        if (health <= 0) {
+            return true;
+        } else return false;
+     }
 
     public void hitByPlayer() {
         health -= 1;
@@ -141,7 +146,9 @@ public class wolf_script : MonoBehaviour {
         Vector3 moving;
         if (collision.gameObject.name.Contains("link")) {
             Physics.IgnoreCollision(player.GetComponent<BoxCollider>(), collider);
-            cooldown = 45;
+            if (this.name.Contains("Big"))
+                cooldown = 60;
+            else cooldown = 45;
             collision.gameObject.GetComponent<PlayerScript>().wasHit("wolf");
             if (facing == 0) {
                 moving = player.transform.localPosition;

@@ -15,13 +15,13 @@ public class WinMenu : MonoBehaviour {
         if (treant.GetComponent<treant_script>().healthSystem.GetHealth() <= 0 && !deathMenuUI.activeSelf)
         {
             winMenuUI.SetActive(true);
-            Time.timeScale = 0f;
+            //Time.timeScale = 0f;
         }
     }
 
     public void OnMainMenuClicked()
     {
-        Time.timeScale = 1f;
+        //Time.timeScale = 1f;
         LoadManager.Instance.LoadScene(SceneNames.MAIN_MENU_SCENE);
     }
 
