@@ -93,7 +93,6 @@ public class treant_script : MonoBehaviour {
             this.treant_anim.SetInteger(speed, 0);
             if (healthBar.gameObject.activeSelf)
             {
-                Debug.Log("in");
                 healthBar.gameObject.SetActive(false);
                 nameText.gameObject.SetActive(false);
             }
