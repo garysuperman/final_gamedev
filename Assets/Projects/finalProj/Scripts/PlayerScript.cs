@@ -200,7 +200,7 @@ public class PlayerScript : MonoBehaviour
         {
             if (hit.transform.gameObject.name.Contains("treant")) {
                 hit.transform.gameObject.GetComponent<treant_script>().hitByPlayer();
-            } else if (hit.transform.gameObject.name.Contains("wolf")) {
+            } else if (hit.transform.gameObject.name.Contains("wolf") || hit.transform.gameObject.name.Contains("black")) {
                 hit.transform.gameObject.GetComponent<wolf_script>().hitByPlayer();
             }
             else if (hit.transform.gameObject.name.Contains("BigWolf")) {
